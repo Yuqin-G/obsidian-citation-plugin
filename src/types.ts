@@ -1,5 +1,6 @@
 import * as BibTeXParser from '@retorquere/bibtex-parser';
 import { Entry as EntryDataBibLaTeX } from '@retorquere/bibtex-parser';
+import { Notice } from 'obsidian';
 // Also make EntryDataBibLaTeX available to other modules
 export { Entry as EntryDataBibLaTeX } from '@retorquere/bibtex-parser';
 
@@ -31,6 +32,7 @@ export const TEMPLATE_VARIABLES = {
   URL: '',
   year: 'Publication year',
   zoteroSelectURI: 'URI to open the reference in Zotero',
+  zoteroFile: 'URI to open PDF Files in Zotero',
 };
 
 export class Library {
@@ -65,6 +67,7 @@ export class Library {
       URL: entry.URL,
       year: entry.year?.toString(),
       zoteroSelectURI: entry.zoteroSelectURI,
+      zoteroFile: entry.zoteroFile,
     };
 
     return { entry: entry.toJSON(), ...shortcuts };
@@ -197,6 +200,16 @@ export abstract class Entry {
    */
   public get zoteroSelectURI(): string {
     return `zotero://select/items/@${this.id}`;
+  }
+
+  public get zoteroFile(): string {
+    const files = this.files || [];
+    const pdfPaths = files.filter((path) =>
+      path.toLowerCase().endsWith('pdf'),
+    );
+    const index = pdfPaths[0].indexOf('storage');
+    const Paths = pdfPaths[0].substring(index + 9, index + 9 + 8);
+    return `zotero://open-pdf/library/items/${Paths}`;
   }
 
   toJSON(): Record<string, unknown> {
@@ -421,7 +434,6 @@ export class EntryBibLaTeXAdapter extends Entry {
     if (this.data.fields.files) {
       ret = ret.concat(this.data.fields.files.flatMap((x) => x.split(';')));
     }
-
     return ret;
   }
 
