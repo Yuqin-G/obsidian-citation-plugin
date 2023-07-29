@@ -1,8 +1,11 @@
 # obsidian-citation-plugin
 
-This plugin for [Obsidian](https://obsidian.md) integrates your academic reference manager with the Obsidian editing experience.
+This plugin for [Obsidian](https://obsidian.md) integrates your academic reference manager with the Obsidian editing experience forked from [hans](https://github.com/hans/obsidian-citation-plugin).
 
-![](screenshot.png)
+
+### I add a new variable in Template settings: **open PDF files in Zotero**
+
+![](Snipaste_1.png)
 
 The plugin supports reading bibliographies in [BibTeX / BibLaTeX `.bib` format][4] and [CSL-JSON format][1].
 
