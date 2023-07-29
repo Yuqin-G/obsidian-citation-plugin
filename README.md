@@ -1,6 +1,6 @@
 # obsidian-citation-plugin
 
-This plugin for [Obsidian](https://obsidian.md) integrates your academic reference manager with the Obsidian editing experience forked from [hans](https://github.com/hans/obsidian-citation-plugin).
+This plugin for [Obsidian](https://obsidian.md) integrates your academic reference manager with the Obsidian editing experience forked from [hans:https://github.com/hans/obsidian-citation-plugin](https://github.com/hans/obsidian-citation-plugin).
 
 
 ### I add a new variable in Template settings: **open PDF files in Zotero**
